@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import TodoItem from './TodoItem';
-const APIURL = './api/todos';
+import TodoForm from './TodoForm';
+import * as apiCalls from './api';
 
 class TodoList extends Component {
     constructor(props) {
@@ -8,43 +9,51 @@ class TodoList extends Component {
         this.state = {
             todos:[]
         }
+        this.addTodo = this.addTodo.bind(this);
     }
 
     componentWillMount() {
         this.loadTodos();
     }
 
-    loadTodos() {
-        fetch(APIURL)
-        .then(res => {
-            if(!res.ok) {
-                if(res.status >= 400 && res.status < 500) {
-                    return res.json()
-                    .then(data => {
-                        let err = {errorMessage: data.message};
-                        throw err;
-                    })
-                }
-                else {
-                    let err = {errorMessage: 'server is not responding'};
-                    throw err;
-                }
-            }
-            return res.json();
-        })
-        .then(todos => this.setState({todos}))
+    async loadTodos() {
+        let todos = await apiCalls.getTodos();
+        this.setState({todos});
     }
+
+    async addTodo(val) {
+        let newTodo = await apiCalls.createTodo(val);
+        this.setState({todos: [...this.state.todos, newTodo]})
+    }
+
+
+    async deleteTodo(id) {
+        await apiCalls.removeTodo(id);
+            const todos = this.state.todos.filter(todo => todo._id !==id);
+            this.setState({todos})
+    }
+
+    async toggleTodo(todo) {
+        let updatedTodo = await apiCalls.toggle(todo);
+        const todos = this.state.todos.map(todo => (todo._id === updatedTodo._id)
+        ? {...todo, completed: !todo.completed} : todo)
+            this.setState({todos})
+    }
+
 
     render() {
         const todos = this.state.todos.map((todo) => (
             <TodoItem 
             key={todo._id}
             {...todo}
+            onDelete={this.deleteTodo.bind(this,todo._id)}
+            onToggle= {this.toggleTodo.bind(this, todo)}
             />
         ));
         return (
             <div>
                 <h1>Todo List</h1>
+                <TodoForm addTodo={this.addTodo} />
                 <ul>
                     {todos}
                 </ul>
