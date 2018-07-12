@@ -1,0 +1,78 @@
+.month {
+    height: 100%;
+    background-color: RGBA(3, 178, 240, 1.00);
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.title-month {
+    display: flex;
+    justify-content: center;
+}
+
+h1, h2 {
+    color: white;
+    font-size: 1.5rem;
+    font-family: 'Lato', sans-serif;
+    padding: 6px;
+    font-weight: 600;
+}
+
+h2 {
+    font-weight: 400;
+}
+
+.calendar {
+    padding: 30px 20px;
+}
+
+.calendar-header {
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 6px;
+    color: white;
+    font-size: 1.25rem;
+    font-family: 'Lato', sans-serif;
+}
+
+.day {
+    padding: 14px 0px;
+    font-weight: 600;
+}
+
+.date {
+    padding: 7px 0px;
+    border-radius: 50%;
+    border: 2px solid RGBA(3, 178, 240, 1.00);
+    transition: border ease-in 200ms;
+    cursor: pointer;
+}
+
+.date:hover {
+    border: 2px solid RGBA(245, 245, 245, 1.00);
+}
+
+.today {
+    background-color: white;
+    border-radius: 50%;
+    color: RGBA(3, 178, 240, 1.00);
+    border: 2px solid white;
+    transition: background-color ease-in 300ms;
+}
+
+.today:hover {
+    background-color: RGBA(245, 245, 245, 1.00);
+}
+
+.full-day {
+    box-sizing: border-box;
+    border: 2px solid RGBA(229, 137, 151, 1.00);
+    border-radius: 50%;
+}
+
+.half-day {
+    box-sizing: border-box;
+    border: 2px solid RGBA(229, 178, 136, 1.00);
+    border-radius: 50%;
+}

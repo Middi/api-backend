@@ -3,15 +3,27 @@ const mongoose = require('mongoose');
 let todoSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: 'Name cannot be blank!'
+        required: true
     },
-    completed: {
-        type: Boolean,
-        default: false
+    dateStart: {
+        type: String,
+        required: true
     },
-    created_date: {
-        type: Date,
-        default: Date.now
+    dateEnd: {
+        type: String,
+        required: true
+    },
+    timeStart: {
+        type: String,
+        required: true
+    },
+    timeEnd: {
+        type: String,
+        required: true
+    },
+    shiftType: {
+        type: String,
+        required: true
     }
 });
 

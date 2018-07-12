@@ -1,9 +1,9 @@
 import React from 'react';
 
-const TodoItem = ({name, completed, onDelete, onToggle}) => (
+const TodoItem = ({name, dateStart, dateEnd, timeStart, timeEnd, shiftType, onDelete, onToggle}) => (
     <li>
-        <span onClick={onToggle} style={{textDecoration: completed ? 'line-through' : 'none'}}>
-            {name}
+        <span onClick={onToggle}>
+            {name}, {dateStart}, {dateEnd}
         </span>
         <span onClick={onDelete}> x </span>
     </li>

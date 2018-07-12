@@ -10,7 +10,14 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    db.Todo.create(req.body)
+    db.Todo.create({
+        name: req.body.name,
+        dateStart: req.body.dateStart,
+        dateEnd: req.body.dateEnd,
+        timeStart: req.body.timeStart,
+        timeEnd: req.body.timeEnd,
+        shiftType: req.body.shiftType,
+    })
     .then(newTodo => {
         res.json(newTodo)
     })

@@ -4,13 +4,9 @@ import TodoForm from './TodoForm';
 import * as apiCalls from './api';
 
 class TodoList extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+    state = {
             todos:[]
         }
-        this.addTodo = this.addTodo.bind(this);
-    }
 
     componentWillMount() {
         this.loadTodos();

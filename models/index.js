@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 mongoose.set('debug', true);
-mongoose.connect('mongodb://localhost/api-test');
+mongoose.connect('mongodb://Middi:Thomas123!@ds131711.mlab.com:31711/calendar');
 
 mongoose.Promise = Promise;
 
