@@ -12,6 +12,8 @@ class Modal extends Component {
                     <form>
                         <label>Event</label>
                         <input type="text" name="name" onKeyUp={e => this.props.change(e)} />
+                        <label>Location</label>
+                        <input type="text" name="location" onKeyUp={e => this.props.change(e)} />
                         <label>Start Date</label>
                         <input type="date" name="dateStart" onKeyUp={e => this.props.change(e)} />
                         <label>Start Time</label>

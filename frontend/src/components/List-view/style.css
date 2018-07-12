@@ -1,6 +1,7 @@
 .list {
     height: 100%;
     width: 50%;
-    padding: 30px;
+    padding: 20px 30px;
     box-sizing: border-box;
+    overflow: scroll;
 }

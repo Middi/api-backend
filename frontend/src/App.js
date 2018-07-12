@@ -54,6 +54,9 @@ class App extends Component {
   clickSubmit = e => {
     e.preventDefault();
     this.addTodo(this.state.event);
+    const newState = {...this.state};
+    newState.event = {};
+    this.setState(newState);
     this.ModalEvent();
   }
 
