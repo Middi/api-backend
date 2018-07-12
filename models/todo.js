@@ -9,6 +9,9 @@ let todoSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    location: {
+        type: String
+    },
     dateEnd: {
         type: String,
         required: true

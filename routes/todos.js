@@ -16,6 +16,7 @@ router.post('/', (req, res) => {
         dateEnd: req.body.dateEnd,
         timeStart: req.body.timeStart,
         timeEnd: req.body.timeEnd,
+        location: req.body.location,
         shiftType: req.body.shiftType,
     })
     .then(newTodo => {

@@ -42,6 +42,28 @@ class App extends Component {
     });
   }
 
+  change = e => {
+    // Spread state into new variable
+    const NS = {...this.state};
+    // Change what needs to be changed
+    NS.event[e.target.name] = e.target.value;
+    // Set state with new version of state
+    this.setState(NS);
+  }
+
+  clickSubmit = e => {
+    e.preventDefault();
+    this.addTodo(this.state.event);
+    this.ModalEvent();
+  }
+
+  ModalEvent = () => {
+    const newState = {...this.state};
+    newState.modalOpen = !this.state.modalOpen;
+    this.setState(newState)
+  }
+
+
 
   componentWillMount() {
     this.loadTodos();

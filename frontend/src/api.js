@@ -26,7 +26,7 @@ export async function createTodo(val) {
         headers: new Headers({
             'Content-Type': 'application/json',
         }),
-        body: JSON.stringify({name: val})
+        body: JSON.stringify(val)
     })
     .then(res => {
         if(!res.ok) {
