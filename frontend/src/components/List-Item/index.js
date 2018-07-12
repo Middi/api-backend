@@ -8,11 +8,11 @@ class ListItem extends Component {
         
         return (
             <article>
-                {
-                    this.props.stuff.dateStart ? <h1 class="list-day">{day.slice(-2)}</h1>
-                : ''
-                }
-                <h2 className="list-title">{this.props.stuff.name}</h2>
+                <h1 class="list-day">{day.slice(-2)}</h1>
+                <div className="list-content">
+                    <h2 className="list-title">{this.props.stuff.name}</h2>
+                    <p className="list-time">{this.props.stuff.timeStart} - {this.props.stuff.timeEnd}</p>
+                </div>
             </article>
         )
     }

@@ -4,6 +4,11 @@ article {
  width: 100%;
  margin: 14px 0;
  display: flex;
+ align-items: center;
+}
+
+.list-content {
+    padding: 10px;
 }
 
 .list-day {
@@ -15,4 +20,10 @@ article {
 .list-title {
     font-size: 1.25rem;
     color: black;
+    padding: 0;
+}
+
+.list-time {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #555555;
 }
