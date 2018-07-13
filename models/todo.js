@@ -26,7 +26,7 @@ let todoSchema = new mongoose.Schema({
         required: true
     },
     shiftType: {
-        type: String,
+        type: Number,
         required: true
     },
     epoch: {

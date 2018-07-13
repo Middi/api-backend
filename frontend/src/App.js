@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import * as apiCalls from './api';
-import TodoItem from './TodoItem';
-import TodoForm from './TodoForm';
 import Monthly from './components/Monthly';
 import Total from './components/Total';
 import List from './components/List-view';
@@ -22,7 +20,8 @@ class App extends Component {
       timeEnd: '',
       shiftType: 'Full Day',
       month: ''
-    }
+    },
+    total: ''
   }
 
 
@@ -76,6 +75,14 @@ class App extends Component {
     this.deleteTodo(id);
   }
 
+  calculate = () => {
+    let total = 0;
+    this.state.todos.forEach(function(item) {
+      total = total + item.shiftType;
+    });
+    this.setState({total});
+  }
+
   componentWillMount() {
     this.loadTodos();
     this.getDate();
@@ -84,6 +91,7 @@ class App extends Component {
   async loadTodos() {
     let todos = await apiCalls.getTodos();
     this.setState({ todos });
+    this.calculate();
   }
 
   async addTodo(val) {
@@ -119,25 +127,19 @@ class App extends Component {
       <div>
         
         <div className="wrapper">
-        <div className="App">
-          <div className="left">
-            <Monthly addEvent={this.ModalEvent} monthMinus={this.monthMinus} {...this.state} />
-            <Total />
+          <div className="App">
+            <div className="left">
+              <Monthly addEvent={this.ModalEvent} monthMinus={this.monthMinus} {...this.state} />
+              <Total total={this.state.total} />
+            </div>
+            <List removeTodo={this.removeTodo} items={this.state.todos} />
           </div>
-          <List removeTodo={this.removeTodo} items={this.state.todos} />
+            {
+              this.state.modalOpen ?
+                <Modal closeModal={this.ModalEvent} clickSubmit={this.clickSubmit} change={this.change} /> :
+                null
+            }
         </div>
-          {
-            this.state.modalOpen ?
-              <Modal closeModal={this.ModalEvent} clickSubmit={this.clickSubmit} change={this.change} /> :
-              null
-          }
-      </div>
-
-
-        {/* <TodoForm addTodo={this.addTodo} />
-        <ul>
-          {items}
-        </ul> */}
       </div>
     )
   }

@@ -24,8 +24,8 @@ class Modal extends Component {
                         <input type="time" name="timeEnd" onKeyUp={e => this.props.change(e)} />
                         <label>Shift Type</label>
                         <select name="shiftType" onChange={e => this.props.change(e)}>
-                            <option value="Full Day" name="shiftType">Full Day</option>
-                            <option value="Half Day" name="shiftType">Half Day</option>
+                            <option value="1000" name="shiftType">Full Day</option>
+                            <option value="500" name="shiftType">Half Day</option>
                         </select>
                         <button onClick={(e) => this.props.clickSubmit(e)}>Submit</button>
                     </form>

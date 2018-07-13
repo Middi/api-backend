@@ -4,8 +4,7 @@ router = express.Router();
 let db = require('../models');
 
 router.get('/', (req, res) => {
-    var date = new Date();
-    var month = date.getMonth();
+    var month = new Date().getMonth();
     const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     let monthName = monthNames[month];
 
@@ -31,7 +30,7 @@ router.post('/', (req, res) => {
         timeStart: req.body.timeStart,
         timeEnd: req.body.timeEnd,
         location: req.body.location,
-        shiftType: req.body.shiftType,
+        shiftType: parseInt(req.body.shiftType),
         epoch: myEpoch,
         month: monthName
     })
