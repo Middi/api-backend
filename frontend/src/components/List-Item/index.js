@@ -4,16 +4,16 @@ import './style.css';
 
 class ListItem extends Component {
     render() {
-        const day = this.props.stuff.dateStart;
+        const {stuff} = this.props;
         return (
             <article>
-                <h1 className="list-day">{day.slice(-2)}</h1>
+                <h1 className="list-day" style={stuff.shiftType === 1000 ? {color: '#367a7b'} : {color: '#F1d918'}  }>{stuff.dateStart.slice(-2)}</h1>
                 <div className="list-content">
-                    <h2 className="list-title">{this.props.stuff.name}</h2>
-                    <p className="list-location">{this.props.stuff.location}</p>
-                    <p className="list-time">{this.props.stuff.timeStart} - {this.props.stuff.timeEnd}</p>
+                    <h2 className="list-title">{stuff.name}</h2>
+                    <p className="list-location">{stuff.location}</p>
+                    <p className="list-time">{stuff.timeStart} - {stuff.timeEnd}</p>
                 </div>
-                <span className="delete-button" onClick={() => this.props.removeTodo(this.props.stuff._id)}>+</span>
+                <span className="delete-button" onClick={() => this.props.removeTodo(stuff._id)}>+</span>
             </article>
         )
     }
