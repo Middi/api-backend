@@ -6,6 +6,8 @@ article {
     display: flex;
     align-items: center;
     cursor: pointer;
+    padding: 0 6px;
+    box-sizing: border-box;
 }
 
 article:hover {
@@ -14,6 +16,7 @@ article:hover {
 
 .list-content {
     padding: 10px;
+    flex-grow: 2;
 }
 
 .list-day {
@@ -36,4 +39,15 @@ article:hover {
 
 .list-location {
     color: #333333;
+}
+
+.delete-button {
+    transform: rotate(45deg);
+    font-size: 2rem;
+    margin: 10px;
+    color: #444444;
+}
+
+.delete-button:hover {
+    color: red;
 }

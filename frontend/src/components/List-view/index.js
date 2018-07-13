@@ -6,7 +6,7 @@ import './style.css';
 class List extends Component {
     render() {
         const items = this.props.items.map((todo) => (
-        <ListItem key={todo._id} stuff={todo} />
+        <ListItem  removeTodo={this.props.removeTodo} key={todo._id} stuff={todo} />
      ));
         return (
             <div className="list">

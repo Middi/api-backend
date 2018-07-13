@@ -20,7 +20,8 @@ class App extends Component {
       dateEnd: '',
       timeStart: '',
       timeEnd: '',
-      shiftType: 'Full Day'
+      shiftType: 'Full Day',
+      month: ''
     }
   }
 
@@ -34,11 +35,16 @@ class App extends Component {
     let today = date.getDate();
     let daysInMonth = new Date(year, month, 0).getDate();
 
+    var startDay = new Date(year + "-" + (month + 1) + "-01").getDay();
+
+    startDay = (startDay===0) ? 7 : startDay;
+
     this.setState({
       year,
       monthName,
       today,
-      daysInMonth
+      daysInMonth,
+      startDay
     });
   }
 
@@ -66,7 +72,9 @@ class App extends Component {
     this.setState(newState)
   }
 
-
+  removeTodo = (id) => {
+    this.deleteTodo(id);
+  }
 
   componentWillMount() {
     this.loadTodos();
@@ -79,8 +87,9 @@ class App extends Component {
   }
 
   async addTodo(val) {
-    let newTodo = await apiCalls.createTodo(val);
-    this.setState({ todos: [...this.state.todos, newTodo] })
+    await apiCalls.createTodo(val);
+    this.setState({ todos: [...this.state.todos] })
+    this.loadTodos();
   }
 
 
@@ -115,7 +124,7 @@ class App extends Component {
             <Monthly addEvent={this.ModalEvent} monthMinus={this.monthMinus} {...this.state} />
             <Total />
           </div>
-          <List items={this.state.todos} />
+          <List removeTodo={this.removeTodo} items={this.state.todos} />
         </div>
           {
             this.state.modalOpen ?

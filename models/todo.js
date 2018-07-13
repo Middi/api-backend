@@ -10,7 +10,8 @@ let todoSchema = new mongoose.Schema({
         required: true
     },
     location: {
-        type: String
+        type: String,
+        required: true
     },
     dateEnd: {
         type: String,
@@ -25,6 +26,14 @@ let todoSchema = new mongoose.Schema({
         required: true
     },
     shiftType: {
+        type: String,
+        required: true
+    },
+    epoch: {
+        type: String,
+        required: true
+    },
+    month: {
         type: String,
         required: true
     }

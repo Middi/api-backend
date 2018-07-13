@@ -6,7 +6,7 @@ class Monthly extends Component {
     
     render() {
         let arr = [];
-        for(var i=1; i<this.props.daysInMonth+1; i++){
+        for(var i= (2 - this.props.startDay); i<this.props.daysInMonth+1; i++){
             arr.push(
                 <Day addEvent={this.props.addEvent} date={i} key={i} today={this.props.today} />
             );  
