@@ -5,7 +5,7 @@ class Total extends Component {
     render() {
         return (
             <div className="total">
-                <h3>{this.props.total} <span>NOK</span></h3>
+                <h3>{this.props.total.toLocaleString()} <span>NOK</span></h3>
             </div>
         )
     }

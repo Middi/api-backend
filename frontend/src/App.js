@@ -18,7 +18,7 @@ class App extends Component {
       dateEnd: '',
       timeStart: '',
       timeEnd: '',
-      shiftType: 'Full Day',
+      shiftType: '1000',
       month: ''
     },
     total: ''
