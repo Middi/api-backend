@@ -7,7 +7,7 @@ class ListItem extends Component {
         const {stuff} = this.props;
         return (
             <article>
-                <h1 className="list-day" style={stuff.shiftType === 1000 ? {color: '#367a7b'} : {color: '#F1d918'}  }>{stuff.dateStart.slice(-2)}</h1>
+                <h1 className="list-day" style={{color: `${stuff.shiftType === 1000 ? '#367a7b' : '#f1d918'}`}}>{stuff.dateStart.slice(-2)}</h1>
                 <div className="list-content">
                     <h2 className="list-title">{stuff.name}</h2>
                     <p className="list-location">{stuff.location}</p>
